@@ -1,0 +1,49 @@
+int arr[]={5,6,7,8,9,10,11,12,13};
+
+void setup(){
+  for (int i=0;i<9;i++)
+{
+    pinMode(arr[i],OUTPUT);}
+  Serial.begin(9600);
+}
+void loop(){
+  for (int i=0;i<9;i++)
+{
+  
+  digitalWrite(arr[i],LOW);
+  }int sensorread1=analogRead(A5);
+  int sensorread2=analogRead(A4);
+  
+  
+  if(sensorread1>=0&& sensorread1<=341){
+    if(sensorread2>=0&&sensorread2<=341){
+      digitalWrite(5,HIGH);
+    }
+    else if(sensorread2>341&&sensorread2<=683){
+      digitalWrite(6,HIGH);}
+    else{
+        digitalWrite(7,HIGH);}}
+    
+    
+    else if(sensorread1>341&&sensorread1<=683){
+    	if(sensorread2>=0&&sensorread2<=341){
+      	digitalWrite(8,HIGH);
+    	}
+    	else if(sensorread2>341&&sensorread2<=683){
+      	digitalWrite(9,HIGH);}
+    	else{
+        digitalWrite(10,HIGH);}}
+  
+  
+      else{
+        if(sensorread2>=0&&sensorread2<=341){
+      digitalWrite(11,HIGH);
+    }
+    else if(sensorread2>341&&sensorread2<=683){
+      digitalWrite(12,HIGH);}
+      else{
+        digitalWrite(13,HIGH);}}
+  
+       	Serial.println(sensorread1);
+        Serial.println(sensorread2);
+}
