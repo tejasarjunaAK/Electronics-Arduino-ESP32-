@@ -1,0 +1,19 @@
+//arduino1
+#include <Servo.h>
+Servo myservo;
+void setup(){
+  myservo.attach(9);
+  Serial.begin(9600);}
+void loop(){
+  if (Serial.available()){
+    int angle=Serial.parseInt();
+    myservo.write(angle);}}
+//arduino2
+void setup(){
+  Serial.begin(9600);
+ }
+void loop(){
+  int potent=analogRead(A1);
+  int data=map(potent,0,1023,0,180);
+  Serial.println(data);
+  delay(50);}
