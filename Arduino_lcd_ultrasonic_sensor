@@ -1,0 +1,27 @@
+#include <LiquidCrystal.h>
+int TrigPin= 7;
+int Echopin= 6;
+LiquidCrystal lcd(2,3,9,10,11,12);
+void setup(){
+  lcd.begin(16,2);
+  lcd.print("ready");
+  delay(1000);
+  lcd.clear();
+pinMode(TrigPin,OUTPUT);
+pinMode(Echopin,INPUT);}
+void loop(){
+  double distance=0.0;
+  digitalWrite(TrigPin,LOW);
+  delayMicroseconds(2);
+  digitalWrite(TrigPin,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TrigPin,LOW);
+  double duration=pulseIn(Echopin,HIGH,20000);
+  distance= duration*343.0/2000.0;//in millimeter
+  lcd.setCursor(0,0);
+  lcd.print("Distance");
+  lcd.setCursor(0,1);
+ 
+  lcd.print(distance);
+  delay(1000);
+  lcd.clear();}
