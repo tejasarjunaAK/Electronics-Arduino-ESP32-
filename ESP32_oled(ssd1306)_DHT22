@@ -1,0 +1,54 @@
+#include <Adafruit_GFX.h>
+#include <Wire.h>
+#include <Adafruit_SSD1306.h>
+#include <DHT.h>
+
+# define DHT_pin 19
+DHT dht(DHT_pin,DHT22);
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+#define OLED_reset -1
+//to create disply object 
+Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_reset);
+
+
+void setup() {
+
+  Serial.begin(115200);
+  dht.begin();
+  if(!oled.begin(SSD1306_SWITCHCAPVCC,0x3C)){
+    Serial.println("oled failure");
+  } 
+  oled.clearDisplay();
+  oled.setTextSize(1);
+  oled.setTextColor(SSD1306_WHITE);
+  oled.setCursor(0,0);
+  oled.print("works");
+  oled.display();
+  delay(1000);
+
+}
+
+void loop() {
+  oled.clearDisplay();
+  
+  float humid=dht.readHumidity();
+  float temp=dht.readTemperature();
+  if (isnan(humid)||isnan(temp)){
+    oled.setCursor(0,0);
+    oled.println("dht failure");
+    //println prints the text at the same line as that of cursor then it moves the curor down
+  }
+  else{
+    oled.setCursor(0,0);
+    oled.print(humid);
+    oled.println("%");
+    oled.println(temp);
+    delay(1000);
+    
+  }
+  oled.display();
+  delay(1000);
+
+}
