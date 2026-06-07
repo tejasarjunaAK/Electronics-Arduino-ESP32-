@@ -244,7 +244,17 @@ if ( isDigit(ch)){
  blink1=ch-'0';  <------ this will give the number itself
  Serial.println(blink0);
  Serial.println(blink1);}
-if ch is '7',then blink1 is 7, blink0 is 55. 55 is ASCII character for cahr '7'.
+if ch is '7',then blink1 is 7, blink0 is 55. 55 is ASCII character for char '7'.
+Therefore, never forget to do ch -'0', before equating to integer.
+
+To convert Arduino String to integer or to Float:-
+Function is str.toInt() or str.toFloat();
+String str ="123";
+int text=str.toInt();
+String text2="4.0123";
+int myNum= text2.toFloat();
+
+In C string array, every element must be one byte char and not a string - not even one character more than one.
 
 
 
