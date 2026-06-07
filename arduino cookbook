@@ -263,6 +263,30 @@ of just 0,1.
 Sensors like distance sensing sensors, send pulse and then calculate distancce by finding time duration for echo to reach. 
 Applications using these sensors use function called pulseIn() to get the time for pulse to reach back to the sensor.
 
+Note:RFID Reader and GPS use serial ports of arduino to communicate, hence they use uart communication to communicate with arduino.
+Whereas i2c and spi are communication protocols used for sensors and actuators.
+Note:Sensors designed for a maximum of 3.3 volts can be destroyed by connecting them to 5 volts. Check the absolute maximum rating for your
+device before connecting.
+
+There are sensors that work only by powering it to 3.3V. Connect the power of sensor to 3.3V. The signal pin to analog pin in arduino. But if we use this, we will get
+3.3/5*1023 as the resolution for full sensor value. We will lose resolution.
+Therefore we use the AREF Pin in Arduino board for that. Connect 3.3 V source to the AREF Pin. AREF Pin tells arduino uno what is the max voltage the sensor can output.
+
+
+There is a critical hardware hazard you must follow when using the AREF pin, or you will permanently fry your microcontroller chip.
+The Golden Rule: You must call analogReference(EXTERNAL); in your code BEFORE you connect any voltage wire to the physical AREF pin or call analogRead().
+void setup() {
+  Serial.begin(9600);
+
+  // CRITICAL: Tells Arduino to use the voltage on the AREF pin as the max limit
+  analogReference(EXTERNAL); 
+}
+
+void loop() {
+  int sensorValue = analogRead(A0);
+  Serial.println(sensorValue);
+  delay(100);
+}
 
 
 
