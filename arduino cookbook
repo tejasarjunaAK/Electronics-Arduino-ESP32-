@@ -298,6 +298,40 @@ b) Taking multiple sensor values and averaging them to get the value closer to t
 A common problem is that the sensor just tells you a physical condition has occurred, not what caused it.
 So, we have to use ingenuity and trial and error to come up with what caused the issue and also get successful reading.
 
+digital output sensors like tilt sensors, can be connected to digital pins or analog pins. We are going to check only the digital state of the sensor. Analog pins can perform these as well.
+
+External pull up resistor: Will look this way-
+Resistor from GPIO pin to VDD/VCC. And from pin to switch or sensor to GND.
+
+Tilt sensor uses pull_up resistors like switch. 
+How to write code when external pull_up is used:
+void setup(){
+ pinMode(Pin,INPUT);}
+void loop(){
+ int val=digitalRead(Pin);
+ if (val ==true){
+   Serial.println("Switched off or no tilt");}
+ else{
+   Serial.println("tilt observed or switched on");}
+
+Tilt sensor:
+The most common tilt sensor is a ball bearing in a box with contacts at one end. When
+the box is tilted the ball rolls away from the contacts and the connection is broken.
+
+Photoresistor or LDR(light detecting resistor):
+Like thermistor, connect this to fixed resistor and make it as voltage divider.
+No, it is exactly the opposite! In a standard photoresistor (LDR), when light increases, the internal resistance decreases drastically. So, higher voltage read or high 
+resolution means, the resistance is high , so light is less.
+
+Photodiode : It is connected in reverse bias, and when the p side of the diode is smaller in length and when light hits the p side, electrons become free and move towards the battery 
+connected to n side. The current generated is small.So resistance high resistance is connected, for Arduino to measure the voltage. Photodiode module comes with resistor also.
+These are very quick, unlike photoresistor, so they are used in super fast optical encoders.
+
+
+
+
+
+
 
 
 
