@@ -257,6 +257,13 @@ int myNum= text2.toFloat();
 In C string array, every element must be one byte char and not a string - not even one character more than one.
 
 
+Sensors in detail:
+Some sensors - turn Voltage On/OFF - tilt sensor, motion sensor. They are the digitaal output from the sensors. But sensors are there that give the sensing values instead
+of just 0,1.
+Sensors like distance sensing sensors, send pulse and then calculate distancce by finding time duration for echo to reach. 
+Applications using these sensors use function called pulseIn() to get the time for pulse to reach back to the sensor.
+
+
 
 
 
