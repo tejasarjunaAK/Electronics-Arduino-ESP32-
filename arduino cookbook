@@ -94,6 +94,51 @@ String data =Serial.readString();
 data.trim(); <------- to remove accidental trailing and leading spaces that arise.
 In this method, additional spaces arise  : so we do the trimming part.
 
+Mapping values within one range to another range:
+int val = analogRead(pin); // read the sensor (ranges from 0 to 1023)
+percent = map(val,0,1023,0,100);
 
+For swapping variables:
+// swap the two global values
+void swap()
+{
+int temp;
+temp = x;
+x = y;
+y = temp;
+}
+
+The do...while loop is similar to the while loop, but the instructions in the code block
+are executed before the condition is checked. Use this form when you must have the
+code executed at least once, even if the expression is false:
+do
+{
+blink(); // call a function to turn an LED on and off
+}
+while (analogRead(sensorPin) > 100);
+
+Use break to come out of for loop, while loop.
+
+Using switch and cases instead of if( variable == "k"){]
+if ( Serial.available()) // Check to see if at least one
+// character is available
+{
+char ch = Serial.read();
+switch(ch)
+{
+case '1':
+blink();
+break;
+case '2':
+blink();
+blink();
+break;
+case '+':
+digitalWrite(ledPin,HIGH);
+break;   <------------------- to break out of Serial.available()
+
+Logical AND :&&
+Logica OR : ||
+logical NOT : !
 
 
