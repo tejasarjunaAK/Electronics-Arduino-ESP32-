@@ -70,5 +70,30 @@ To get comma separated texts from string:
 Get the substring after each comma, assign it as original text. Use text.indexOf(",") <----- gets first index where the substring occurs.
 text.indexOf() will give index of char or substring.
 
+Converting C-string array to integer:
+Function is atoi()
+int delay= atoi(string);
+
+Converting number to arduino string:
+Putting String as dtype, we can put number as input without quotes.
+a) String mynum = 123 <----- will convert integer to string.
+b) in concatenation :
+text.concat(123);
+c) text + 123 <------- will concatenate Arduino string :text and convert 123 to arduino string before concatenating.
+
+All that we put in and get from Serial monitor or in uart communication is string <----- C-string.
+We get to read only one byte at a time from Serial monitor:
+so <---- text=" ";
+while(Serial.available()){
+char c =Serial.read();
+text.concat(c);
+} <---- This is most popular way
+or
+We can use: function - Serial.readString();
+String data =Serial.readString();
+data.trim(); <------- to remove accidental trailing and leading spaces that arise.
+In this method, additional spaces arise  : so we do the trimming part.
+
+
 
 
