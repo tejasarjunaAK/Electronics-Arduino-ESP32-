@@ -141,4 +141,16 @@ Logical AND :&&
 Logica OR : ||
 logical NOT : !
 
+Finding remainder:
+if (myValue % 10 == 0)
+{
+Serial.println("The value is a multiple of 10");
+}
+This is how we use abs(), fabs() functions : abs () is used for int and long int dtypes.
+int x = analogRead(0);
+int y = analogRead(1);
+if (abs(x-y) > 10)
+{
+Serial.println("The analog values differ by more than 10");
+}
 
