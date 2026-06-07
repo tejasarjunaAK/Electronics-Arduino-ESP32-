@@ -183,7 +183,7 @@ Generating random numbers:
 Function : random(x) - to get random long number between 0 (included) and x (not included),
 random(min,max) - to get random long dtype (integer only), from min(inclusive) to max(exclusive).
 
-To check if the cahr is a digit : we use - c.isDigit()
+To check if the cahr is a digit : we use - isDigit(ch);
 
 
 Serial functions:
@@ -217,7 +217,34 @@ output in serial monitor is:
 0
 1234 where the input was 1234.
 
+Very IMPORTANT: 
+When we serial print in mcu, then it keeps sending the data, while the remaining processes keep happening in the mcu.
+When you call Serial.print("Hello"), your Arduino doesn't instantly push those characters out of the physical TX pin. Instead, it drops those bytes into an outgoing transmission buffer (a tiny waiting room in memory) and lets the background hardware slide them out bit-by-bit. This allows your main loop() code to keep running instantly without waiting for the slow serial hardware.
 
+When you call Serial.flush(), it pauses (blocks) your entire program execution right at that line and refuses to move forward until that outgoing buffer is completely 
+empty—meaning all data has physically left the TX pin.
+So, use of Serial.flush() is to block the entire program till every bit in serial buffer has been sent away. After they have been sent, the program continues.
+
+When we serial print a number, it is printed in decimal format only. But if we want it to be serial printed in octal, hexadecimal or binary, we must mention:-
+Serial.print(myNum,BIN);
+Serial.println(myNum,OCT);
+Serial.print(myNum,HEX);
+Serial.print(myNum,DEC);
+
+IMPORTANT: if char ch =65;
+Serial.print(ch);
+It will be printed as A.
+
+Note Very IMPORTANT-
+To convert char from 0-9 to integer.
+int blink0;
+int blink1;
+if ( isDigit(ch)){
+ blink=ch;    <--------- this will give ascii number of that character
+ blink1=ch-'0';  <------ this will give the number itself
+ Serial.println(blink0);
+ Serial.println(blink1);}
+if ch is '7',then blink1 is 7, blink0 is 55. 55 is ASCII character for cahr '7'.
 
 
 
