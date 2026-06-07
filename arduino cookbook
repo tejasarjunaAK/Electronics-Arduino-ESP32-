@@ -31,7 +31,41 @@ If variable is initialised but not given value then it takes garbage values, but
 If declared inside main() function, then it will have garbage values. We must use static infront of dtype, to make the values to be 0 instead  of garbage.
 Similarly for any variable also-> when static is used , it stores its value to be 0 if value not given when initialised.
 
+If the same components are used and they are multiple in number, we will give names to them stored in c- array. Now when pinMode or anytime:
+We use for loop. - for (int i=0;i<=n;i++){ pinMode(arr[i],OUTPUT;}
+
 Arduino Strings:
 dtype : String.
 text.length();  <------ gets length of string.
 text1.concat(text2);  <--------- concatenates text1 and text2, where both are strings. 
+
+Functions of Arduino String:
+charAt(n) Returns the nth character of the String
+compareTo(S2) Compares the String to the given String S2
+concat(S2) Returns a new String that is the combination of the String and S2
+endsWith(S2) Returns true if the String ends with the characters of S2
+equals(S2) Returns true if the String is an exact match for S2 (case-sensitive)
+equalsIgnoreCase(S2) Same as equals but is not case-sensitive
+getBytes(buffer,len) Copies len(gth) characters into the supplied byte buffer
+indexOf(S) Returns the index of the supplied String (or character) or –1 if not found
+lastIndexOf(S) Same as indexOf but starts from the end of the String
+length() Returns the number of characters in the String
+replace(A,B) Replaces all instances of String (or character) A with B
+setCharAt(index,c) Stores the character c in the String at the given index
+startsWith(S2) Returns true if the String starts with the characters of S2
+substring(index) Returns a String with the characters starting from index to the end of the String
+substring(index,to) Same as above, but the substring ends at the character location before the ‘to’ position
+toCharArray(buffer,len) Copies up o len characters of the String to the supplied buffer
+toInt() Returns the integer value of the numeric digits in the String
+toLowerCase() Returns a String with all characters converted to lowercase
+toUpperCase() Returns a String with all characters converted to uppercase
+trim() Returns a String with all leading and trailing whitespace removed
+
+Choosing between Arduino Strings and C - string arrays:
+Arduino strings undergo memory leak when the string is modified - so when the loop is run for long, it will get error for using excess memory.
+Therefore, C-string arrays , when the string is to be modified.
+Arduino Strings will be used when strings are not changed and when we need rich handling of texts.
+
+
+
+
