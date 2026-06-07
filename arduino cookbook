@@ -186,7 +186,36 @@ random(min,max) - to get random long dtype (integer only), from min(inclusive) t
 To check if the cahr is a digit : we use - c.isDigit()
 
 
+Serial functions:
+When your computer sends data to the Arduino, the incoming bytes are stored in a temporary memory location called a buffer. The buffer can hold up to 64 bytes.
 
+Serial.available()
+Before you read data, you must check if any data has actually arrived. This function returns the number of bytes waiting in the buffer.
+Serial.read():
+Reads the oldest single byte waiting in the buffer. Once read, that byte is removed from the buffer.
+
+Serial.read() will only get one character per time. To get full number at once -> integer or float we use these two functions: Serial.parseInt(), Serial.parseFloat()
+if (Serial.available() > 0) {
+  int targetAngle = Serial.parseInt(); // Automatically looks for and parses the integer
+}
+
+Note: Serial.available() is actually a number that represents the number of bytes in buffer where the Serial data we sent will be stored temporarily.
+When each character is being read by Serial.read(), the character will vanish from the Serial buffer and the count of Serial.available() will reduce. When we can do 
+if(Serial.available()) and when we do while(Serial.available()),
+When we want all data in the serial buffer to be obtained at a single go, we do, while Serial.available() and get them. If (Serial.availlable()) and then processing is used
+when we process one char in one loop or if the input is number so we can get them at one go by Serial.parseInt() or Serial.parseFloat().
+
+When we read or parse the value, then the memory of what is read is totally erased.
+  if (Serial.available()){
+    Serial.println(Serial.available());
+    int c =Serial.parseInt();
+    Serial.println(Serial.available());
+    Serial.print(c);}
+   delay(1000);}
+output in serial monitor is:
+4
+0
+1234 where the input was 1234.
 
 
 
