@@ -1,1 +1,15 @@
+main() function is there, but it’s hidden under the covers by the Arduino build environment. The build
+process creates an intermediate file that includes the sketch code and the followingadditional statements:
+int main(void)
+{
+init();
+setup();
+for (;;)
+loop();
+return 0;
+}
+The first thing that happens is a call to an init() function that initializes the Arduino hardware. Next, your sketch’s setup() function
+is called. Finally, your loop() function is called over and over. Because the for loop never terminates, the return statement is never executed.
+
+
 
