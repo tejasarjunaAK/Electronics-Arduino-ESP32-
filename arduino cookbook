@@ -30,3 +30,8 @@ then writing values of elements  inside array later
 If variable is initialised but not given value then it takes garbage values, but the elements in array will get value =0, if declared globally.
 If declared inside main() function, then it will have garbage values. We must use static infront of dtype, to make the values to be 0 instead  of garbage.
 Similarly for any variable also-> when static is used , it stores its value to be 0 if value not given when initialised.
+
+Arduino Strings:
+dtype : String.
+text.length();  <------ gets length of string.
+text1.concat(text2);  <--------- concatenates text1 and text2, where both are strings. 
