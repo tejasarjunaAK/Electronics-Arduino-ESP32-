@@ -1,3 +1,4 @@
+Arduino Coding
 main() function is there, but it’s hidden under the covers by the Arduino build environment. The build
 process creates an intermediate file that includes the sketch code and the followingadditional statements:
 int main(void)
@@ -11,5 +12,21 @@ return 0;
 The first thing that happens is a call to an init() function that initializes the Arduino hardware. Next, your sketch’s setup() function
 is called. Finally, your loop() function is called over and over. Because the for loop never terminates, the return statement is never executed.
 
+When using floating point numbers : don't use equality check : == never do , since even if they are mathematically correct, they may not be same
+by == because of floating point precision - inaccurate.
 
+To print to n decimal places:
+Serial.print(variable,n)
 
+absolute value of integers : abs()
+for floating point numbers : fabs()
+
+Arrays:
+initializing arrays:-
+<dtype> arr[] ={1,2,3};
+int arr[5] ={1,2,3};
+int arr[5];
+then writing values of elements  inside array later
+If variable is initialised but not given value then it takes garbage values, but the elements in array will get value =0, if declared globally.
+If declared inside main() function, then it will have garbage values. We must use static infront of dtype, to make the values to be 0 instead  of garbage.
+Similarly for any variable also-> when static is used , it stores its value to be 0 if value not given when initialised.
