@@ -66,6 +66,9 @@ Arduino strings undergo memory leak when the string is modified - so when the lo
 Therefore, C-string arrays , when the string is to be modified.
 Arduino Strings will be used when strings are not changed and when we need rich handling of texts.
 
+To get comma separated texts from string:
+Get the substring after each comma, assign it as original text. Use text.indexOf(",") <----- gets first index where the substring occurs.
+text.indexOf() will give index of char or substring.
 
 
 
