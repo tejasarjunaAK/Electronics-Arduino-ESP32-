@@ -288,6 +288,15 @@ void loop() {
   delay(100);
 }
 
+Handling sensor data:
+Reading sesnors in messy analog world is a skill. We must learn to place it in proper location, orientation, range and limiting its exposure to things that 
+affect readings is necessary to get expected result. 
+We can use different solutions to filter out noise :
+a) Only considering the sensor values that are above a threshold as actual signs of event and not consider all sensor value range.
+b) Taking multiple sensor values and averaging them to get the value closer to the accurate value.
+
+A common problem is that the sensor just tells you a physical condition has occurred, not what caused it.
+So, we have to use ingenuity and trial and error to come up with what caused the issue and also get successful reading.
 
 
 
