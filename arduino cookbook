@@ -154,3 +154,55 @@ if (abs(x-y) > 10)
 Serial.println("The analog values differ by more than 10");
 }
 
+Clipping number to min value and max value:
+We use constrain() function. myNum = constrain(variable,100,200);  <------ The val will be cllipped between 100 and 200. 
+min(x,y) returns the smaller of two numbers. max(x,y) returns the larger of two number.
+MaxNum=max(variable,1000);
+And very Important: We can only do min(), max() for two numbers at a time. So, if we want to check that for more numbers, we need to do like this:
+min(min ( min(a,b),min(c,d)),min(min(e,f),min(g,h))); Find the minimum of every pair and then check with minimum of other pairs.
+
+To get power of a number : base x, power y
+pow(x, y) returns the value of x raised to the power of y:
+myValue = pow(3,2);
+This calculates 3^2, so myValue will equal 9.
+sqrt(x) will get square root of x.
+
+floor() and ceil():
+floor(x) will get the integer just less than x and ceil of x will get the integer just greater than x but the output of floor(x), ceil(x) is float with two decimal places
+like: 2.00, -1.00, 1.00, etc.
+
+Trignometric functions:
+sin(x), cos(x), tan(x) are the functions to get them.
+To convert radians to deg and vice-versa:
+rad =deg *DEG_TO_RAD;  or deg*PI/180;
+deg =rad*RAD_TO_DEG; or rad*180/PI;
+Note: It is not required to import the math library for doing these things as the Arduino library has these within themselves. And simulators and Arduino IDE will have the 
+#include <Arduino.h> hidden inside them.
+
+Generating random numbers:
+Function : random(x) - to get random long number between 0 (included) and x (not included),
+random(min,max) - to get random long dtype (integer only), from min(inclusive) to max(exclusive).
+
+To check if the cahr is a digit : we use - c.isDigit()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
