@@ -327,6 +327,18 @@ Photodiode : It is connected in reverse bias, and when the p side of the diode i
 connected to n side. The current generated is small.So resistance high resistance is connected, for Arduino to measure the voltage. Photodiode module comes with resistor also.
 These are very quick, unlike photoresistor, so they are used in super fast optical encoders.
 
+Ultrasonic sensor:
+ digitalWrite(TrigPin,LOW);
+  delayMicroseconds(2);
+  digitalWrite(TrigPin,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TrigPin,LOW);
+  double duration=pulseIn(Echopin,HIGH,20000);
+Setting the trig pin to be LOW is for having no electrical noise.
+
+Note: In ultrasonic sensor, trigpin is not the one shooting pulses, the hardware shoots 8 pulses of 40 kHz frequency always when the trigpin is HIGH for 10 or more microseconds.
+Trigpin is only a sign, to tell the hardware to start shooting pulses. We keep the trigpin LOW before and after  shooting so that it is not floating and somehow electric noise doesn't
+enter.
 
 
 
